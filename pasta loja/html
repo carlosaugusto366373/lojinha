@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cloud Street</title>
+    <style>
+        /* Estilo Geral da Página */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #000; /* Fundo preto */
+            color: #fff; /* Texto branco */
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Cabeçalho */
+        header {
+            background-color: #000; /* Fundo preto */
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #fff; /* Borda branca */
+        }
+
+        header img {
+            width: 150px;
+            height: auto;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-right: 20px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #fff; /* Links brancos */
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        nav ul li a:hover {
+            color: #000; /* Preto ao passar o mouse */
+            background-color: #fff; /* Fundo branco ao passar o mouse */
+        }
+
+        /* Banner Principal */
+        .hero {
+            background: url('banner.jpg') no-repeat center center;
+            background-size: cover;
+            height: 400px;
+            text-align: center;
+            color: #fff; /* Texto branco */
+            padding: 100px 20px;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        .btn-cta {
+            background-color: #fff; /* Botão branco */
+            padding: 10px 20px;
+            color: #000; /* Texto preto no botão */
+            text-decoration: none;
+            font-size: 18px;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .btn-cta:hover {
+            background-color: #000; /* Fundo preto ao passar o mouse */
+            color: #fff; /* Texto branco no botão */
+        }
+
+        /* Produtos */
+        .products {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            padding: 20px;
+            background-color: #111; /* Fundo preto escuro */
+        }
+
+        .product {
+            background-color: #222; /* Fundo preto mais suave */
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .product img {
+            width: 100%;
+            max-width: 350px;
+            margin: 0 auto;
+            height: auto;
+        }
+
+        .product .price {
+            color: #fff; /* Preço branco */
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .add-to-cart {
+            background-color: #fff; /* Fundo branco */
+            color: #000; /* Texto preto */
+            padding: 10px;
+            text-align: center;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .add-to-cart:hover {
+            background-color: #000; /* Fundo preto ao passar o mouse */
+            color: #fff; /* Texto branco */
+        }
+
+        /* Carrinho de Compras */
+        .cart {
+            background-color: #111; /* Fundo preto escuro */
+            padding: 20px;
+            margin-top: 40px;
+            border-radius: 8px;
+            color: #fff;
+        }
+
+        .cart h2 {
+            text-align: center;
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        .cart-items {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .cart-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: #222; /* Fundo preto mais suave */
+            padding: 10px;
+            border-radius: 8px;
+        }
+
+        .cart-item img {
+            width: 100px;
+            height: auto;
+        }
+
+        .cart-item .item-name {
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .cart-item .item-price {
+            color: #fff; /* Preço branco */
+        }
+
+        .cart-item .remove-item {
+            background-color: #fff; /* Fundo branco */
+            color: #000; /* Texto preto */
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .cart-item .remove-item:hover {
+            background-color: #000; /* Fundo preto ao passar o mouse */
+            color: #fff; /* Texto branco */
+        }
+
+        .cart-footer {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+            font-size: 18px;
+        }
+
+        .cart-footer .total {
+            font-weight: bold;
+            color: #fff; /* Total branco */
+        }
+
+        .cart-footer .checkout {
+            background-color: #fff; /* Fundo branco */
+            color: #000; /* Texto preto */
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .cart-footer .checkout:hover {
+            background-color: #000; /* Fundo preto ao passar o mouse */
+            color: #fff; /* Texto branco */
+        }
+
+        /* Rodapé */
+        footer {
+            background-color: #000; /* Fundo preto */
+            color: #fff; /* Texto branco */
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        footer a {
+            color: #fff; /* Links brancos */
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        footer a:hover {
+            color: #000; /* Preto ao passar o mouse */
+            background-color: #fff; /* Fundo branco ao passar o mouse */
+        }
+    </style>
+</head>
+<body>
+
+<!-- Cabeçalho -->
+<header>
+    <img src="Imagem do WhatsApp de 2025-02-27 à(s) 05.16.18_20b35266.jpg" alt="Cloud Street Logo">
+    <nav>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Novidades</a></li>
+            <li><a href="#">Promoções</a></li>
+            <li><a href="#">Contato</a></li>
+        </ul>
+    </nav>
+</header>
+
+<!-- Banner Principal -->
+<div class="hero">
+    <h1>Bem-vindo à Cloud Street</h1>
+    <p>Explore as últimas tendências em moda.</p>
+    <a href="#" class="btn-cta">Ver Novidades</a>
+</div>
+
+<!-- Produtos -->
+<section class="products">
+    <!-- Camisa High -->
+    <div class="product">
+        <img src="IMG_8098.jpg" alt="Camisas High">
+        <h3>Camisas High</h3>
+        <p class="price">R$ 70,00</p>
+
+        <!-- Seletor de Tamanho -->
+        <select class="size-selector">
+            <option value="P">P</option>
+            <option value="M">M</option>
+            <option value="G">G</option>
+            <option value="GG">GG</option>
+        </select>
+
+        <div class="add-to-cart" onclick="addToCart('Camisa High', 'R$ 70,00', 'https://linkdaimagem.com/camisa-high.jpg', document.querySelector('.size-selector').value)">Adicionar ao Carrinho</div>
+    </div>
+
+    <!-- Camisas High Segundo Drop -->
+    <div class="product">
+        <img src="IMG_5345.jpg" alt="Camisas High Segundo Drop">
+        <h3>Camisas High Segundo Drop</h3>
+        <p class="price">R$ 70,00</p>
+
+        <!-- Seletor de Tamanho -->
+        <select class="size-selector">
+            <option value="P">P</option>
+            <option value="M">M</option>
+            <option value="G">G</option>
+            <option value="GG">GG</option>
+        </select>
+
+        <div class="add-to-cart" onclick="addToCart('Camisa High Segundo Drop', 'R$ 70,00', 'https://linkdaimagem.com/high-segundo-drop.jpg', document.querySelectorAll('.size-selector')[1].value)">Adicionar ao Carrinho</div>
+    </div>
+
+    <!-- Camisas High Terceiro Drop -->
+    <div class="product">
+        <img src="IMG_7583.jpg" alt="Camisas High Terceiro Drop">
+        <h3>Camisas High Terceiro Drop</h3>
+        <p class="price">R$ 70,00</p>
+
+        <!-- Seletor de Tamanho -->
+        <select class="size-selector">
+            <option value="P">P</option>
+            <option value="M">M</option>
+            <option value="G">G</option>
+            <option value="GG">GG</option>
+        </select>
+
+        <div class="add-to-cart" onclick="addToCart('Camisa High Terceiro Drop', 'R$ 70,00', 'https://linkdaimagem.com/high-terceiro-drop.jpg', document.querySelectorAll('.size-selector')[2].value)">Adicionar ao Carrinho</div>
+    </div>
+</section>
+
+<!-- Outras seções de produtos seguem o mesmo padrão -->
+<section class="products">
+    <!-- Camisas Off White Primeira Linha -->
+    <div class="product">
+        <img src="IMG_9543.jpg" alt="Camisas Off White Primeira Linha">
+        <h3>Camisas Off White Primeira Linha</h3>
+        <p class="price">R$ 80,00</p>
+
+        <!-- Seletor de Tamanho -->
+        <select class="size-selector">
+            <option value="P">P</option>
+            <option value="M">M</option>
+            <option value="G">G</option>
+            <option value="GG">GG</option>
+        </select>
+
+        <div class="add-to-cart" onclick="addToCart('Camisa Off White Primeira Linha', 'R$ 80,00', 'https://linkdaimagem.com/off-white-primeira-linha.jpg', document.querySelectorAll('.size-selector')[3].value)">Adicionar ao Carrinho</div>
+    </div>
+
+    <!-- Camisas Off White Segunda Linha -->
+    <div class="product">
+        <img src="IMG_9548.jpg" alt="Camisas Off White Segunda Linha">
+        <h3>Camisas Off White Segunda Linha</h3>
+        <p class="price">R$ 70,00</p>
+
+        <!-- Seletor de Tamanho -->
+        <select class="size-selector">
+            <option value="P">P</option>
+            <option value="M">M</option>
+            <option value="G">G</option>
+            <option value="GG">GG</option>
+        </select>
+
+        <div class="add-to-cart" onclick="addToCart('Camisa Off White Segunda Linha', 'R$ 70,00', 'https://linkdaimagem.com/off-white-segunda-linha.jpg', document.querySelectorAll('.size-selector')[4].value)">Adicionar ao Carrinho</div>
+    </div>
+
+    <!-- Camisas Off White Edição Limitada -->
+    <div class="product">
+        <img src="IMG_9551.jpg" alt="Camisas Off White Edição Limitada">
+        <h3>Camisas Off White Edição Limitada</h3>
+        <p class="price">R$ 90,00</p>
+
+        <!-- Seletor de Tamanho -->
+        <select class="size-selector">
+            <option value="P">P</option>
+            <option value="M">M</option>
+            <option value="G">G</option>
+            <option value="GG">GG</option>
+        </select>
+
+        <div class="add-to-cart" onclick="addToCart('Camisa Off White Edição Limitada', 'R$ 90,00', 'https://linkdaimagem.com/off-white-edicao-limitada.jpg', document.querySelectorAll('.size-selector')[5].value)">Adicionar ao Carrinho</div>
+    </div>
+</section>
+
+<!-- Camisas Nike -->
+<section class="products">
+    <!-- Camisas Nike Primeira Linha -->
+    <div class="product">
+        <img src="IMG_0118.jpg" alt="Camisas Nike Primeira Linha">
+        <h3>Camisas Nike Primeira Linha</h3>
+        <p class="price">R$ 80,00</p>
+
+        <!-- Seletor de Tamanho -->
+        <select class="size-selector">
+            <option value="P">P</option>
+            <option value="M">M</option>
+            <option value="G">G</option>
+            <option value="GG">GG</option>
+        </select>
+
+        <div class="add-to-cart" onclick="addToCart('Camisa Nike Primeira Linha', 'R$ 80,00', 'https://linkdaimagem.com/nike-primeira-linha.jpg', document.querySelectorAll('.size-selector')[6].value)">Adicionar ao Carrinho</div>
+    </div>
+
+    <!-- Camisas Nike Segunda Linha -->
+    <div class="product">
+        <img src="IMG_0132.jpg" alt="Camisas Nike Segunda Linha">
+        <h3>Camisas Nike Segunda Linha</h3>
+        <p class="price">R$ 70,00</p>
+
+        <!-- Seletor de Tamanho -->
+        <select class="size-selector">
+            <option value="P">P</option>
+            <option value="M">M</option>
+            <option value="G">G</option>
+            <option value="GG">GG</option>
+        </select>
+
+        <div class="add-to-cart" onclick="addToCart('Camisa Nike Segunda Linha', 'R$ 70,00', 'https://linkdaimagem.com/nike-segunda-linha.jpg', document.querySelectorAll('.size-selector')[7].value)">Adicionar ao Carrinho</div>
+    </div>
+
+    <!-- Camisas Nike Conjunto Edição Limitada -->
+    <div class="product">
+        <img src="IMG_1576.jpg" alt="Camisas Nike Conjuto Edição Limitada">
+        <h3>Camisas Nike Conjunto Edição Limitada</h3>
+        <p class="price">R$ 90,00</p>
+
+        <!-- Seletor de Tamanho -->
+        <select class="size-selector">
+            <option value="P">P</option>
+            <option value="M">M</option>
+            <option value="G">G</option>
+            <option value="GG">GG</option>
+        </select>
+
+        <div class="add-to-cart" onclick="addToCart('Camisa Nike Conjunto Edição Limitada', 'R$ 90,00', 'https://linkdaimagem.com/nike-edicao-limitada.jpg', document.querySelectorAll('.size-selector')[8].value)">Adicionar ao Carrinho</div>
+    </div>
+</section>
+
+<!-- Carrinho de Compras -->
+<div class="cart">
+    <h2>Carrinho de Compras</h2>
+    <div class="cart-items" id="cart-items">
+        <!-- Itens serão inseridos aqui -->
+    </div>
+
+    <div class="cart-footer">
+        <p class="total" id="cart-total">Total: R$ 0,00</p>
+        <!-- Adicionar redirecionamento para o WhatsApp -->
+        <button class="checkout" onclick="redirectToWhatsApp()">Finalizar Compra</button>
+    </div>
+</div>
+
+<script>
+    const cartItems = [];
+    const cartTotal = document.getElementById('cart-total');
+    const cartItemsContainer = document.getElementById('cart-items');
+
+    // Função para adicionar item ao carrinho
+    function addToCart(name, price, imgUrl) {
+        const item = { name, price, imgUrl };
+        cartItems.push(item);
+        updateCart();
+    }
+
+    // Função para remover item do carrinho
+    function removeFromCart(index) {
+        cartItems.splice(index, 1);
+        updateCart();
+    }
+
+    // Função para atualizar o carrinho
+    function updateCart() {
+        // Limpa o carrinho
+        cartItemsContainer.innerHTML = '';
+
+        let total = 0;
+
+        // Adiciona os itens ao carrinho
+        cartItems.forEach((item, index) => {
+            const cartItemElement = document.createElement('div');
+            cartItemElement.classList.add('cart-item');
+
+            cartItemElement.innerHTML = `
+                <img src="${item.imgUrl}" alt="${item.name}">
+                <div>
+                    <p class="item-name">${item.name}</p>
+                    <p class="item-price">${item.price}</p>
+                </div>
+                <button class="remove-item" onclick="removeFromCart(${index})">Remover</button>
+            `;
+
+            cartItemsContainer.appendChild(cartItemElement);
+
+            // Calcula o total
+            const priceValue = parseFloat(item.price.replace('R$ ', '').replace(',', '.'));
+            total += priceValue;
+        });
+
+        // Atualiza o total do carrinho
+        cartTotal.innerText = `Total: R$ ${total.toFixed(2).replace('.', ',')}`;
+    }
+
+    // Função para redirecionar para o WhatsApp com os detalhes da compra
+    function redirectToWhatsApp() {
+        const orderDetails = cartItems.map(item => `${item.name} - ${item.price}`).join('%0A');
+        const totalAmount = cartTotal.innerText.replace('Total: ', '').replace('R$', '').replace(',', '.');
+        
+        // Construa a URL de redirecionamento com os detalhes do pedido
+        const whatsappUrl = `https://wa.me/554499694564?text=Eu%20quero%20finalizar%20minha%20compra%0A${orderDetails}%0ATotal:%20R$%20${totalAmount}`;
+
+        // Redireciona para o WhatsApp
+        window.location.href = whatsappUrl;
+    }
+</script>
+
+</body>
+</html>
